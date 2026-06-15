@@ -21,7 +21,11 @@ Prompt requirements:
 
 - preserve the exact character identity, outfit, colors, proportions, and silhouette
 - keep the full body centered and visible
-- use a perfectly flat solid chroma-key background only
-- keep the background absolutely clean: no contact shadows, ambient shadows, cast shadows, reflections, glow, outlines, ground plane, horizon line, texture, particles, lighting falloff, noise, gradients, or color variation
+- treat the output as a technical green-screen asset, not an illustrated scene
+- require every background pixel from edge to edge to be the same flat chroma color
+- allow only two visual layers: the animated character and the pure chroma background
+- keep the background absolutely clean: no contact shadows, ambient shadows, cast shadows, floor, wall, room, scenery, reflections, glow, outlines, ground plane, horizon line, texture, particles, lighting falloff, noise, gradients, vignettes, or color variation
 - avoid camera movement, zoom, scene cuts, text, extra characters, and props
 - make motion readable for later sprite-sheet extraction
+
+If the generated video has scenery, a floor, a wall, shadows, gradients, or non-chroma background variation, treat it as failed and ask before spending another paid retry.

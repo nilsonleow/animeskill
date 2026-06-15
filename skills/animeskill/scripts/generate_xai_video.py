@@ -60,10 +60,13 @@ def build_prompt(action: str, duration: int, chroma: str) -> str:
         f"Animate the provided character image into a {duration}-second {action} animation "
         "for a 2D game sprite sheet. Preserve the exact character identity, outfit, colors, "
         "proportions, and silhouette from the source image. Keep the full body centered and visible. "
-        f"Use a perfectly flat solid {chroma} chroma-key background only. The background must be "
-        "absolutely clean: no contact shadows, ambient shadows, cast shadows, reflections, glow, "
-        "outlines, ground plane, horizon line, texture, particles, lighting falloff, noise, gradients, "
-        "or color variation. No camera movement, no zoom, no scene cuts, no text, no extra characters, no props. "
+        f"This is a technical green-screen asset, not an illustrated scene. Every background pixel "
+        f"from edge to edge must be exactly the same flat solid {chroma} color. Only two visual layers "
+        "are allowed: the animated character and the pure chroma background. The character must not "
+        "cast anything onto the background. No contact shadows, ambient shadows, cast shadows, floor, "
+        "wall, room, scenery, reflections, glow, outlines, ground plane, horizon line, texture, particles, "
+        "lighting falloff, noise, gradients, vignettes, or color variation. No camera movement, no zoom, "
+        "no scene cuts, no text, no extra characters, no props. "
         "Clean readable motion, loop-friendly timing."
     )
 

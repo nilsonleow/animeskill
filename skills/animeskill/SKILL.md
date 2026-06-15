@@ -70,10 +70,16 @@ Keep prompts specific and restrictive:
 
 - Preserve the exact character identity, silhouette, outfit, colors, and proportions from the source image.
 - Center the full character in frame.
-- Use a perfectly flat, solid chroma-key background with the selected hex color.
-- Keep the background absolutely clean: no contact shadows, ambient shadows, cast shadows, reflections, glow, outlines, ground plane, horizon line, texture, particles, lighting falloff, noise, gradients, or color variation.
+- Treat the output as a technical green-screen asset, not an illustrated scene.
+- Require every background pixel from edge to edge to be the same flat chroma color.
+- Allow only two visual layers: the animated character and the pure chroma background.
+- Keep the background absolutely clean: no contact shadows, ambient shadows, cast shadows, floor, wall, room, scenery, reflections, glow, outlines, ground plane, horizon line, texture, particles, lighting falloff, noise, gradients, vignettes, or color variation.
 - Avoid camera movement, zoom, cuts, text, props, and extra characters.
 - Ask for readable game-animation motion suitable for sprite-sheet extraction.
+
+## Result Acceptance
+
+After generation, inspect the video if possible. If the background contains scenery, a floor, a wall, shadows, gradients, or any non-chroma color variation, treat the result as failed. Do not claim it is ready for sprite-sheet extraction. Ask the user whether to spend another paid retry using the failed-background retry prompt in `references/prompting.md`.
 
 ## References
 
