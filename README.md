@@ -78,7 +78,7 @@ Steps:
    - macOS/Linux: ~/.codex/skills/animeskill
 3. If the destination folder already exists, replace it instead of copying into it; avoid creating nested paths like animeskill/animeskill.
 4. Preserve the internal folders: SKILL.md, agents/, references/, and scripts/.
-5. Do not copy generated videos, .env files, or Git metadata.
+5. Do not copy generated videos, .env files, Git metadata, __pycache__, or other cache folders.
 6. After installation, verify that SKILL.md exists in the destination.
 7. Ask whether I want to configure the xAI API key now. If your shell supports interactive hidden input, run scripts/configure_xai_key.py from the installed skill and let me paste the key into the hidden prompt. If interactive input is not available, do not ask me to paste the key into chat; instead tell me the exact configure command to run locally.
 8. Remind me that paid generations require cost confirmation.
