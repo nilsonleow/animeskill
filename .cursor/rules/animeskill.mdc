@@ -21,6 +21,7 @@ Prompt requirements:
 
 - preserve the exact character identity, outfit, colors, proportions, and silhouette
 - keep the full body centered and visible
-- use a flat solid chroma-key background only
-- avoid camera movement, zoom, scene cuts, text, extra characters, props, shadows, and gradients
+- use a perfectly flat solid chroma-key background only
+- keep the background absolutely clean: no contact shadows, ambient shadows, cast shadows, reflections, glow, outlines, ground plane, horizon line, texture, particles, lighting falloff, noise, gradients, or color variation
+- avoid camera movement, zoom, scene cuts, text, extra characters, and props
 - make motion readable for later sprite-sheet extraction

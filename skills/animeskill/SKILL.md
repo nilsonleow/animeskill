@@ -55,8 +55,9 @@ Keep prompts specific and restrictive:
 
 - Preserve the exact character identity, silhouette, outfit, colors, and proportions from the source image.
 - Center the full character in frame.
-- Use a flat, solid chroma-key background with the selected hex color.
-- Avoid camera movement, zoom, cuts, text, props, extra characters, shadows on the background, and background gradients.
+- Use a perfectly flat, solid chroma-key background with the selected hex color.
+- Keep the background absolutely clean: no contact shadows, ambient shadows, cast shadows, reflections, glow, outlines, ground plane, horizon line, texture, particles, lighting falloff, noise, gradients, or color variation.
+- Avoid camera movement, zoom, cuts, text, props, and extra characters.
 - Ask for readable game-animation motion suitable for sprite-sheet extraction.
 
 ## References
