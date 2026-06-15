@@ -50,13 +50,21 @@ That command affects only the current PowerShell session. User-level env also wo
 
 ## Install For Codex
 
-Copy or symlink `skills/animeskill` into your Codex skills directory.
-
-PowerShell copy example:
+On Windows, install directly from GitHub in any PowerShell directory:
 
 ```powershell
-Copy-Item -Recurse .\skills\animeskill "$env:USERPROFILE\.codex\skills\animeskill"
+$script = "$env:TEMP\install-animeskill.ps1"
+Invoke-WebRequest "https://raw.githubusercontent.com/nilsonleow/animeskill/main/install.ps1" -OutFile $script
+powershell -ExecutionPolicy Bypass -File $script
 ```
+
+Then configure the API key:
+
+```powershell
+python "$env:USERPROFILE\.codex\skills\animeskill\scripts\configure_xai_key.py"
+```
+
+If you already cloned this repository, you can also copy or symlink `skills/animeskill` into your Codex skills directory.
 
 Then start a new Codex thread and invoke it with `$animeskill`, for example:
 
@@ -72,16 +80,17 @@ You can ask an agent with shell access to install Animeskill directly from GitHu
 Install the Codex skill from https://github.com/nilsonleow/animeskill.
 
 Steps:
-1. Clone or download the repository into a temporary directory.
-2. Copy the folder skills/animeskill into my local Codex skills directory:
+1. On Windows, prefer downloading and running https://raw.githubusercontent.com/nilsonleow/animeskill/main/install.ps1.
+2. Otherwise, clone or download the repository into a temporary directory.
+3. Copy the folder skills/animeskill into my local Codex skills directory:
    - Windows: %USERPROFILE%\.codex\skills\animeskill
    - macOS/Linux: ~/.codex/skills/animeskill
-3. If the destination folder already exists, replace it instead of copying into it; avoid creating nested paths like animeskill/animeskill.
-4. Preserve the internal folders: SKILL.md, agents/, references/, and scripts/.
-5. Do not copy generated videos, .env files, Git metadata, __pycache__, or other cache folders.
-6. After installation, verify that SKILL.md exists in the destination.
-7. Ask whether I want to configure the xAI API key now. If your shell supports interactive hidden input, run scripts/configure_xai_key.py from the installed skill and let me paste the key into the hidden prompt. If interactive input is not available, do not ask me to paste the key into chat; instead tell me the exact configure command to run locally.
-8. Remind me that paid generations require cost confirmation.
+4. If the destination folder already exists, replace it instead of copying into it; avoid creating nested paths like animeskill/animeskill.
+5. Preserve the internal folders: SKILL.md, agents/, references/, and scripts/.
+6. Do not copy generated videos, .env files, Git metadata, __pycache__, or other cache folders.
+7. After installation, verify that SKILL.md exists in the destination.
+8. Ask whether I want to configure the xAI API key now. If your shell supports interactive hidden input, run scripts/configure_xai_key.py from the installed skill and let me paste the key into the hidden prompt. If interactive input is not available, do not ask me to paste the key into chat; instead tell me the exact configure command to run locally.
+9. Remind me that paid generations require cost confirmation.
 ```
 
 For Cursor, use this prompt:

@@ -10,6 +10,7 @@ This repository contains `animeskill`, a Codex/Cursor-oriented skill for generat
 - `skills/animeskill/agents/openai.yaml` contains UI metadata for Codex skill listings.
 - `.cursor/rules/` mirrors the workflow for Cursor users.
 - `docs/agent-install-prompts.md` contains ready-to-send installation prompts for other agents.
+- `install.ps1` installs the Codex skill directly from GitHub on Windows.
 
 Keep skill instructions concise. Put detailed provider notes in `references/` and deterministic automation in `scripts/`.
 
@@ -17,6 +18,7 @@ Keep skill instructions concise. Put detailed provider notes in `references/` an
 
 - `python skills/animeskill/scripts/generate_xai_video.py --help`: inspect CLI options.
 - `python skills/animeskill/scripts/generate_xai_video.py ... --dry-run`: validate inputs, build the prompt, and estimate cost without calling xAI.
+- `powershell -ExecutionPolicy Bypass -File install.ps1`: test Windows skill installation from GitHub.
 - `python C:\Users\nilso\.codex\skills\.system\skill-creator\scripts\quick_validate.py skills/animeskill`: validate Codex skill metadata when developing locally on this machine.
 
 No package manager is required yet. Add one only when the project needs distributable tooling.
