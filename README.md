@@ -66,10 +66,11 @@ Steps:
 2. Copy the folder skills/animeskill into my local Codex skills directory:
    - Windows: %USERPROFILE%\.codex\skills\animeskill
    - macOS/Linux: ~/.codex/skills/animeskill
-3. Preserve the internal folders: SKILL.md, agents/, references/, and scripts/.
-4. Do not copy generated videos, .env files, or Git metadata.
-5. After installation, verify that SKILL.md exists in the destination.
-6. Tell me how to set XAI_API_KEY and remind me that paid generations require cost confirmation.
+3. If the destination folder already exists, replace it instead of copying into it; avoid creating nested paths like animeskill/animeskill.
+4. Preserve the internal folders: SKILL.md, agents/, references/, and scripts/.
+5. Do not copy generated videos, .env files, or Git metadata.
+6. After installation, verify that SKILL.md exists in the destination.
+7. Tell me how to set XAI_API_KEY and remind me that paid generations require cost confirmation.
 ```
 
 For Cursor, use this prompt:
