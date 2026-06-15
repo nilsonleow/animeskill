@@ -17,6 +17,8 @@ Collect missing values before generation:
 
 Do not offer `1024x1024`. Before calling xAI, estimate cost and ask for confirmation. Use `skills/animeskill/scripts/generate_xai_video.py` when this repository is available.
 
+The user may write in Russian or another language. Normalize the final xAI prompt and CLI `--action` to concise English. Examples: `присаживается` -> `crouch down and return to idle`, `зеленый хромокей` -> `#00FF00`, `480` -> `480x480`.
+
 Prompt requirements:
 
 - preserve the exact character identity, outfit, colors, proportions, and silhouette

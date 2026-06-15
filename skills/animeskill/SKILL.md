@@ -33,9 +33,10 @@ Example: `720x720`, `2s` costs about `$0.142`. Remind the user that retries are 
 ## Generation Workflow
 
 1. Validate inputs: duration in `1..3`, size in `480x480|720x720`, chroma in `#00FF00|#FF00FF`.
-2. Build a concise prompt using `references/prompting.md`.
-3. Estimate cost and request confirmation.
-4. Use `scripts/generate_xai_video.py` when possible:
+2. Normalize non-English user requests into concise English API wording using `references/prompting.md`.
+3. Build a concise English prompt using `references/prompting.md`.
+4. Estimate cost and request confirmation.
+5. Use `scripts/generate_xai_video.py` when possible:
 
 ```bash
 python skills/animeskill/scripts/generate_xai_video.py \
@@ -47,7 +48,7 @@ python skills/animeskill/scripts/generate_xai_video.py \
   --output out/walk_720.mp4
 ```
 
-5. Save the downloaded MP4. Do not perform chroma cleanup, sprite-sheet conversion, or heavy post-processing unless explicitly requested.
+6. Save the downloaded MP4. Do not perform chroma cleanup, sprite-sheet conversion, or heavy post-processing unless explicitly requested.
 
 ## API Key Handling
 
@@ -68,6 +69,7 @@ Never print the key, commit it, or store it inside a project repository.
 
 Keep prompts specific and restrictive:
 
+- The user may write in Russian or another language, but the final xAI prompt and `--action` value should be concise English.
 - Preserve the exact character identity, silhouette, outfit, colors, and proportions from the source image.
 - Center the full character in frame.
 - Treat the output as a technical green-screen asset, not an illustrated scene.
