@@ -1,0 +1,4 @@
+interface:
+  display_name: "Animeskill"
+  short_description: "Generate short chroma-key animation clips"
+  default_prompt: "Use $animeskill to animate this character image into a short chroma-key video."

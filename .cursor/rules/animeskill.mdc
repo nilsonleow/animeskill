@@ -1,0 +1,26 @@
+---
+description: Generate short chroma-key animation clips from static character images.
+globs:
+  - "**/*"
+alwaysApply: false
+---
+
+# Animeskill
+
+Use this rule when the user asks to animate a static character image into a short clip for sprite-sheet conversion.
+
+Collect missing values before generation:
+
+- duration: `1`, `2`, or `3` seconds
+- size: `480x480` or `720x720`
+- chroma key: `#00FF00` or `#FF00FF`
+
+Do not offer `1024x1024`. Before calling xAI, estimate cost and ask for confirmation. Use `skills/animeskill/scripts/generate_xai_video.py` when this repository is available.
+
+Prompt requirements:
+
+- preserve the exact character identity, outfit, colors, proportions, and silhouette
+- keep the full body centered and visible
+- use a flat solid chroma-key background only
+- avoid camera movement, zoom, scene cuts, text, extra characters, props, shadows, and gradients
+- make motion readable for later sprite-sheet extraction

@@ -1,0 +1,91 @@
+# Animeskill
+
+Animeskill is a reusable agent skill for turning a static character image into a short chroma-key animation clip for later sprite-sheet conversion. The first provider target is xAI Grok Imagine image-to-video.
+
+Current project constraints:
+
+- Durations: `1`, `2`, or `3` seconds.
+- Sizes: `480x480` or `720x720`.
+- Chroma keys: `#00FF00` or `#FF00FF`.
+- Output: MP4 video, no special post-processing by default.
+
+## Repository Layout
+
+```text
+skills/animeskill/
+  SKILL.md                  # Codex skill instructions
+  agents/openai.yaml        # Codex UI metadata
+  references/               # Provider and prompting notes
+  scripts/generate_xai_video.py
+.cursor/rules/              # Cursor-facing workflow notes
+```
+
+## Requirements
+
+- Python 3.10+.
+- xAI API key with billing enabled.
+- `XAI_API_KEY` set in your shell before paid generation.
+
+PowerShell:
+
+```powershell
+$env:XAI_API_KEY = "xai-..."
+```
+
+## Install For Codex
+
+Copy or symlink `skills/animeskill` into your Codex skills directory.
+
+PowerShell copy example:
+
+```powershell
+Copy-Item -Recurse .\skills\animeskill "$env:USERPROFILE\.codex\skills\animeskill"
+```
+
+Then start a new Codex thread and invoke it with `$animeskill`, for example:
+
+```text
+Use $animeskill to animate @person.png into a 2-second side-view walk cycle on #00FF00 at 720x720.
+```
+
+## Install For Cursor
+
+Copy or keep `.cursor/rules/animeskill.mdc` in the target project. Cursor should then apply the workflow when you ask for Animeskill-style character animation.
+
+## CLI Usage
+
+Dry-run first to validate the prompt and estimate cost:
+
+```powershell
+python .\skills\animeskill\scripts\generate_xai_video.py `
+  --image .\person.png `
+  --action "side-view walk cycle with clear alternating steps" `
+  --duration 2 `
+  --size 720x720 `
+  --chroma "#00FF00" `
+  --output .\out\walk.mp4 `
+  --dry-run
+```
+
+Run a paid generation after reviewing the estimate:
+
+```powershell
+python .\skills\animeskill\scripts\generate_xai_video.py `
+  --image .\person.png `
+  --action "side-view walk cycle with clear alternating steps" `
+  --duration 2 `
+  --size 720x720 `
+  --chroma "#00FF00" `
+  --output .\out\walk.mp4
+```
+
+Use `--yes` only when automation should skip the interactive cost confirmation.
+
+## Cost Defaults
+
+The skill estimates `grok-imagine-video` cost as:
+
+- `480x480`: `$0.05/sec + $0.002` input image.
+- `720x720`: `$0.07/sec + $0.002` input image.
+
+Every retry can incur another charge.
