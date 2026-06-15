@@ -65,6 +65,17 @@ python <skill-path>/scripts/configure_xai_key.py
 
 Never print the key, commit it, or store it inside a project repository.
 
+## Managed Agent Policy Blocks
+
+Some hosted or tenant-managed agents, including Codex inside Cursor, may forbid uploading workspace files to external services. If escalation or network access is denied because a local image would be sent to xAI, stop immediately. Do not try to bypass tenant policy by moving, renaming, encoding, or copying the file elsewhere.
+
+Offer only policy-safe options:
+
+- Ask the user to run the local CLI manually from their own terminal.
+- Ask the workspace/admin owner to allow xAI or provide an approved internal gateway.
+- Use only non-sensitive/public sample images that the tenant policy allows to leave the workspace.
+- Generate prompt and dry-run output only, with no API call.
+
 ## Prompt Rules
 
 Keep prompts specific and restrictive:

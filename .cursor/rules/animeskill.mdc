@@ -17,7 +17,9 @@ Collect missing values before generation:
 
 Do not offer `1024x1024`. Before calling xAI, estimate cost and ask for confirmation. Use `skills/animeskill/scripts/generate_xai_video.py` when this repository is available.
 
-The user may write in Russian or another language. Normalize the final xAI prompt and CLI `--action` to concise English. Examples: `присаживается` -> `crouch down and return to idle`, `зеленый хромокей` -> `#00FF00`, `480` -> `480x480`.
+The user may write in Russian or another language. Normalize the final xAI prompt and CLI `--action` to concise English. Examples: "crouch/squat request" -> `crouch down and return to idle`, "green chroma key" -> `#00FF00`, `480` -> `480x480`.
+
+If a hosted or tenant-managed agent blocks uploading a workspace image to xAI, stop. Do not bypass policy by moving, renaming, encoding, or copying the file. Offer a manual local CLI command, admin allowlist/internal gateway, public sample image, or dry-run only.
 
 Prompt requirements:
 

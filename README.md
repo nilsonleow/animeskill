@@ -110,6 +110,17 @@ Steps:
 
 Copy or keep `.cursor/rules/animeskill.mdc` in the target project. Cursor should then apply the workflow when you ask for Animeskill-style character animation.
 
+## Managed Agent Policy Blocks
+
+Some hosted or tenant-managed agents, including Codex running inside Cursor, may block uploading private workspace files to external services such as xAI. If that happens, Animeskill cannot bypass the policy.
+
+Use one of these options:
+
+- Run the CLI manually from your own terminal.
+- Ask an admin to allow xAI or provide an approved internal gateway.
+- Use only public/non-sensitive sample images that policy allows.
+- Let the agent prepare a dry-run prompt and command, then run the paid command yourself.
+
 ## CLI Usage
 
 Dry-run first to validate the prompt and estimate cost:
