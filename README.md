@@ -48,6 +48,37 @@ Then start a new Codex thread and invoke it with `$animeskill`, for example:
 Use $animeskill to animate @person.png into a 2-second side-view walk cycle on #00FF00 at 720x720.
 ```
 
+## Install From An Agent Prompt
+
+You can ask an agent with shell access to install Animeskill directly from GitHub. Give it this prompt:
+
+```text
+Install the Codex skill from https://github.com/nilsonleow/animeskill.
+
+Steps:
+1. Clone or download the repository into a temporary directory.
+2. Copy the folder skills/animeskill into my local Codex skills directory:
+   - Windows: %USERPROFILE%\.codex\skills\animeskill
+   - macOS/Linux: ~/.codex/skills/animeskill
+3. Preserve the internal folders: SKILL.md, agents/, references/, and scripts/.
+4. Do not copy generated videos, .env files, or Git metadata.
+5. After installation, verify that SKILL.md exists in the destination.
+6. Tell me how to set XAI_API_KEY and remind me that paid generations require cost confirmation.
+```
+
+For Cursor, use this prompt:
+
+```text
+Install the Animeskill Cursor rule from https://github.com/nilsonleow/animeskill.
+
+Steps:
+1. Clone or download the repository into a temporary directory.
+2. Copy .cursor/rules/animeskill.mdc into this project's .cursor/rules/ directory.
+3. If this project does not have .cursor/rules/, create it.
+4. Do not copy generated videos, .env files, or Git metadata.
+5. Confirm the rule file path when done.
+```
+
 ## Install For Cursor
 
 Copy or keep `.cursor/rules/animeskill.mdc` in the target project. Cursor should then apply the workflow when you ask for Animeskill-style character animation.

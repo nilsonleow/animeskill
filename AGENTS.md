@@ -9,6 +9,7 @@ This repository contains `animeskill`, a Codex/Cursor-oriented skill for generat
 - `skills/animeskill/references/` stores API and prompting notes loaded only when needed.
 - `skills/animeskill/agents/openai.yaml` contains UI metadata for Codex skill listings.
 - `.cursor/rules/` mirrors the workflow for Cursor users.
+- `docs/agent-install-prompts.md` contains ready-to-send installation prompts for other agents.
 
 Keep skill instructions concise. Put detailed provider notes in `references/` and deterministic automation in `scripts/`.
 
@@ -34,7 +35,7 @@ Do not commit generated videos, source character images, API responses with secr
 
 ## Commit & Pull Request Guidelines
 
-This project is not initialized as a Git repository yet. Once initialized, use concise imperative commit messages such as `Add xAI video helper` or `Document Cursor setup`.
+Use concise imperative commit messages such as `Add xAI video helper` or `Document agent install prompts`.
 
 Pull requests should describe the workflow change, include dry-run output or validation notes, and call out any paid API test performed.
 
