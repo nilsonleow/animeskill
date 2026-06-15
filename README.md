@@ -32,6 +32,12 @@ PowerShell:
 $env:XAI_API_KEY = "xai-..."
 ```
 
+That command affects only the current PowerShell session. To make the key available to future agent shells, set it as a user environment variable and restart the agent app:
+
+```powershell
+[Environment]::SetEnvironmentVariable("XAI_API_KEY", "xai-...", "User")
+```
+
 ## Install For Codex
 
 Copy or symlink `skills/animeskill` into your Codex skills directory.
