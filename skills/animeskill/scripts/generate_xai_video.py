@@ -21,6 +21,8 @@ PRICES = {
 }
 IMAGE_INPUT_COST = 0.002
 CHROMA_VALUES = {"#00FF00", "#FF00FF"}
+CONFIG_ENV = "ANIMESKILL_CONFIG"
+DEFAULT_CONFIG = Path.home() / ".animeskill" / "config.json"
 
 
 def parse_args() -> argparse.Namespace:
@@ -86,6 +88,30 @@ def download(url: str, output: Path) -> None:
         output.write_bytes(response.read())
 
 
+def config_path() -> Path:
+    configured = os.environ.get(CONFIG_ENV)
+    return Path(configured).expanduser() if configured else DEFAULT_CONFIG
+
+
+def load_api_key() -> tuple[str | None, str]:
+    env_key = os.environ.get("XAI_API_KEY")
+    if env_key:
+        return env_key, "XAI_API_KEY"
+
+    path = config_path()
+    if not path.is_file():
+        return None, str(path)
+    try:
+        data = json.loads(path.read_text(encoding="utf-8-sig"))
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"Invalid Animeskill config JSON at {path}: {exc}") from exc
+
+    key = data.get("xai_api_key")
+    if isinstance(key, str) and key.strip():
+        return key.strip(), str(path)
+    return None, str(path)
+
+
 def main() -> int:
     args = parse_args()
     image_path = Path(args.image)
@@ -122,9 +148,14 @@ def main() -> int:
             print("Cancelled.")
             return 1
 
-    api_key = os.environ.get("XAI_API_KEY")
+    api_key, api_key_source = load_api_key()
     if not api_key:
-        raise SystemExit("Set XAI_API_KEY before generating video.")
+        raise SystemExit(
+            "No xAI API key found. Set XAI_API_KEY or run "
+            "`python <skill>/scripts/configure_xai_key.py` to save one in "
+            f"{api_key_source}."
+        )
+    print(f"Using xAI API key from {api_key_source}.")
 
     start = request_json("https://api.x.ai/v1/videos/generations", "POST", api_key, payload)
     request_id = start.get("request_id")

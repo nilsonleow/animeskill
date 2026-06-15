@@ -16,6 +16,7 @@ skills/animeskill/
   SKILL.md                  # Codex skill instructions
   agents/openai.yaml        # Codex UI metadata
   references/               # Provider and prompting notes
+  scripts/configure_xai_key.py
   scripts/generate_xai_video.py
 .cursor/rules/              # Cursor-facing workflow notes
 ```
@@ -24,15 +25,24 @@ skills/animeskill/
 
 - Python 3.10+.
 - xAI API key with billing enabled.
-- `XAI_API_KEY` set in your shell before paid generation.
+- The key available through `XAI_API_KEY` or Animeskill config.
 
-PowerShell:
+Recommended setup:
+
+```powershell
+python .\skills\animeskill\scripts\configure_xai_key.py
+```
+
+The script prompts for the key without echoing it and stores it outside the repo at `~/.animeskill/config.json`. Set `ANIMESKILL_CONFIG` if you need a custom config path.
+
+Temporary PowerShell-only setup:
+
 
 ```powershell
 $env:XAI_API_KEY = "xai-..."
 ```
 
-That command affects only the current PowerShell session. To make the key available to future agent shells, set it as a user environment variable and restart the agent app:
+That command affects only the current PowerShell session. User-level env also works, but some agent sandboxes may run under a different Windows user:
 
 ```powershell
 [Environment]::SetEnvironmentVariable("XAI_API_KEY", "xai-...", "User")
@@ -70,7 +80,8 @@ Steps:
 4. Preserve the internal folders: SKILL.md, agents/, references/, and scripts/.
 5. Do not copy generated videos, .env files, or Git metadata.
 6. After installation, verify that SKILL.md exists in the destination.
-7. Tell me how to set XAI_API_KEY and remind me that paid generations require cost confirmation.
+7. Ask whether I want to configure the xAI API key now. If your shell supports interactive hidden input, run scripts/configure_xai_key.py from the installed skill and let me paste the key into the hidden prompt. If interactive input is not available, do not ask me to paste the key into chat; instead tell me the exact configure command to run locally.
+8. Remind me that paid generations require cost confirmation.
 ```
 
 For Cursor, use this prompt:
@@ -118,6 +129,24 @@ python .\skills\animeskill\scripts\generate_xai_video.py `
 ```
 
 Use `--yes` only when automation should skip the interactive cost confirmation.
+
+## API Key Storage
+
+Animeskill looks for the xAI key in this order:
+
+1. `XAI_API_KEY`.
+2. `ANIMESKILL_CONFIG`, if set.
+3. `~/.animeskill/config.json`.
+
+The config file contains only:
+
+```json
+{
+  "xai_api_key": "xai-..."
+}
+```
+
+Do not store this file inside a project repository.
 
 ## Cost Defaults
 

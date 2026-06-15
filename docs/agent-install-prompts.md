@@ -16,7 +16,8 @@ Steps:
 4. Preserve the internal folders: SKILL.md, agents/, references/, and scripts/.
 5. Do not copy generated videos, .env files, or Git metadata.
 6. After installation, verify that SKILL.md exists in the destination.
-7. Tell me how to set XAI_API_KEY and remind me that paid generations require cost confirmation.
+7. Ask whether I want to configure the xAI API key now. If your shell supports interactive hidden input, run scripts/configure_xai_key.py from the installed skill and let me paste the key into the hidden prompt. If interactive input is not available, do not ask me to paste the key into chat; instead tell me the exact configure command to run locally.
+8. Remind me that paid generations require cost confirmation.
 ```
 
 ## Cursor Rule Install
@@ -39,7 +40,7 @@ Verify that Animeskill is installed correctly.
 
 Check:
 1. The Codex skill exists at ~/.codex/skills/animeskill or %USERPROFILE%\.codex\skills\animeskill.
-2. SKILL.md, agents/openai.yaml, references/, and scripts/generate_xai_video.py are present.
+2. SKILL.md, agents/openai.yaml, references/, scripts/configure_xai_key.py, and scripts/generate_xai_video.py are present.
 3. The CLI help command runs:
    python <skill-path>/scripts/generate_xai_video.py --help
 4. No API call is made during verification.

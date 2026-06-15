@@ -49,6 +49,21 @@ python skills/animeskill/scripts/generate_xai_video.py \
 
 5. Save the downloaded MP4. Do not perform chroma cleanup, sprite-sheet conversion, or heavy post-processing unless explicitly requested.
 
+## API Key Handling
+
+Use this order for xAI credentials:
+
+1. `XAI_API_KEY` environment variable.
+2. Animeskill user config at `~/.animeskill/config.json`, or the path in `ANIMESKILL_CONFIG`.
+
+If no key is available, ask the user for the key and run:
+
+```bash
+python <skill-path>/scripts/configure_xai_key.py
+```
+
+Never print the key, commit it, or store it inside a project repository.
+
 ## Prompt Rules
 
 Keep prompts specific and restrictive:

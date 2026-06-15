@@ -1,6 +1,8 @@
 .env
 .env.*
 !.env.example
+.animeskill/
+config.json
 __pycache__/
 *.py[cod]
 .pytest_cache/
